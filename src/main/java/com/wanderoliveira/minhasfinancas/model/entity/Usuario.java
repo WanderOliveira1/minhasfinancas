@@ -14,13 +14,14 @@ import lombok.Data;
 @Table (name ="usuario", schema ="financas")
 @Builder
 @Data
+
 public class Usuario {
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	@Id
 	@Column(name ="id")
 	private Long id;
-	@GeneratedValue (strategy = GenerationType.IDENTITY)
+		
 	@Column(name ="nome")
-
 	private String nome;
 	
 	@Column(name ="email")

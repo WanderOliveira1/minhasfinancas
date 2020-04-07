@@ -1,5 +1,6 @@
 package com.wanderoliveira.minhasfinancas.service.impl;
 
+import com.wanderoliveira.minhasfinancas.exception.RegraNecocioException;
 import com.wanderoliveira.minhasfinancas.model.entity.Usuario;
 import com.wanderoliveira.minhasfinancas.model.repository.UsuarioRepository;
 import com.wanderoliveira.minhasfinancas.service.UsuarioService;
@@ -28,7 +29,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public void validarEmail(String email) {
-		// TODO Auto-generated method stub
+		
+		boolean existe = repository.existsByEmail(email);
+		if(existe) {
+			throw new RegraNecocioException("Já existe um usuário cadastrado com este email.");
+		
+		}
 		
 	}
 
